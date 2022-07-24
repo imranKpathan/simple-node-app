@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-node-app-deployment
+spec:
+  selector:
+    matchLabels:
+      component: web
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: simple-node-app
+          image: imrankpathan/simple-node-app
+          ports:
+            - containerPort: 8080
