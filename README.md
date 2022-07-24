@@ -53,7 +53,7 @@ _NOTE: All config files are available in k8s folder.
 * Apply Ingress service:
 ''' kubectl apply -f k8s/simple-node-app-ingress-service.yaml
 '''
-* Install Ingress controlle:
+* Install Ingress controller:
 ''' kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.0/deploy/static/provider/cloud/deploy.yaml
 '''
 * Test app is working as expected.
@@ -125,3 +125,8 @@ jobs:
 ```
 ### Deployment to Google Cloud Kubernetes Engine:
 
+* Create a Cluster & set up a service account key in IAM.
+* Add key & other CLuster details to Github secrets.
+* Install Helm & create Ingress Controllers using Help.
+* Run GitHub actions workflow which will create and push a new Docker image, apply the deployment and required services.
+* Test by launching bowser and hitting external facing IP.
