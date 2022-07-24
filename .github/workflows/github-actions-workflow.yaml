@@ -3,11 +3,20 @@ on:
   #workflow_dispatch:
   push:
     branches: [ "main" ]
+
+env:
+  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
+  GKE_CLUSTER: simple-node-app    # GKE cluster name
+  GKE_ZONE: europe-west1-b 	   # GKE cluster zone
+  DEPLOYMENT_NAME: simple-node-app-deployment # deployment name if changed in deployment.yaml  
+  GKE_SA_KEY: ${{ secrets.GKE_SA_KEY }}
+
 jobs:
   Initialization:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
@@ -29,3 +38,24 @@ jobs:
         with:
           push: true
           tags: imrankpathan/simple-node-app:latest, imrankpathan/simple-node-app:${{github.run_number}}
+  Deploy_To_GKE_Cluster:
+    name: Deploy
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Get GKE Cluster Credentials
+        uses: google-github-actions/get-gke-credentials@v0
+        with:
+          cluster_name: ${{ env.GKE_CLUSTER }}
+          location: ${{ env.GKE_ZONE }}
+          credentials: ${{ env.GKE_SA_KEY }}
+      - name: Deploy
+        run: kubectl apply -f ./k8s
+      - name: Test API Deployment status
+        run: |-
+          kubectl rollout status deployment/test-api-deploy
+          kubectl get services -o wide
