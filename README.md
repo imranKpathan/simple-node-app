@@ -125,5 +125,10 @@ jobs:
 ```
 ### Deployment to Google Cloud Kubernetes Engine:
 <img width="637" alt="image" src="https://user-images.githubusercontent.com/12246571/180670564-fc32c0cc-aeef-41fc-9048-db845e6de90b.png">
+* Create a Cluster & set up a service account key in IAM.
+* Add key & other CLuster details to Github secrets.
+* Install Helm & create Ingress Controllers using Help.
+* Run GitHub actions workflow which will create and push a new Docker image, apply the deployment and required services.
+* Test by launching bowser and hitting external facing IP.
 
 
