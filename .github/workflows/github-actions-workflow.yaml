@@ -57,5 +57,5 @@ jobs:
         run: kubectl apply -f ./k8s
       - name: Test API Deployment status
         run: |-
-          kubectl rollout status deployment/test-api-deploy
+          kubectl rollout status deployment/${{env.DEPLOYMENT_NAME}}
           kubectl get services -o wide
