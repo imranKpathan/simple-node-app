@@ -7,7 +7,7 @@ on:
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: simple-node-app    # GKE cluster name
-  GKE_ZONE: europe-west1-b 	   # GKE cluster zone
+  GKE_ZONE: asia-south1-a 	   # GKE cluster zone
   DEPLOYMENT_NAME: simple-node-app-deployment # deployment name if changed in deployment.yaml  
   GKE_SA_KEY: ${{ secrets.GKE_SA_KEY }}
 
