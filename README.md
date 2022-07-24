@@ -124,4 +124,6 @@ jobs:
           kubectl get services -o wide
 ```
 ### Deployment to Google Cloud Kubernetes Engine:
+<img width="637" alt="image" src="https://user-images.githubusercontent.com/12246571/180670564-fc32c0cc-aeef-41fc-9048-db845e6de90b.png">
+
 
