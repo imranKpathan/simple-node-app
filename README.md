@@ -18,50 +18,52 @@ Simple NodeJs app build using Express API exposing only / & /hello endpoints to 
 This project is to demonstrate building a NodeJS “Hello World” web application and deploy it to a Kubernetes cluster. To build this project follow the steps given below:
 ### Build:
 * Create and use a Dockerfile to build a containerized image for this app.
-
-'''
+```
 docker build -t imrankpathan/simple-node-app .
-'''
-
+```
 ### Publish Image to Docker Hub:
 * Push a new version of the image to Docker Hub.
-'''
+```
 docker push imrankpathan/simple-node-app
-'''
+```
 ### Publish:
 * Sets project version to next version determined in Initialization stage.
 * Publishes application to GitHub packages.
 ### Local Build & Testing:
 #### With Docker:
 * Run Docker image
-'''
+```
 docker run -d -p 8080:8080 --name simple-node-app imrankpathan/simple-node-app
-'''
+```
 * Test Container and app are working as expected:
-'''
+```
 Launch browser and connect to http://localhost:8080/hello
-'''
+```
 #### With Kubernetes:
 * Create app deployment config file.
 * Create ClusterIP service config file.
 * Create Ingress service config file.
 _NOTE: All config files are available in k8s folder.
 * Apply App Deployment:
-''' kubectl apply -f k8s/simple-node-app-deployment.yaml
-'''
+```
+kubectl apply -f k8s/simple-node-app-deployment.yaml
+```
 * Apply ClusterIP service:
-''' kubectl apply -f k8s/simple-node-app-cluster-ip-service.yaml
-'''
+```
+kubectl apply -f k8s/simple-node-app-cluster-ip-service.yaml
+```
 * Apply Ingress service:
-''' kubectl apply -f k8s/simple-node-app-ingress-service.yaml
-'''
+```
+kubectl apply -f k8s/simple-node-app-ingress-service.yaml
+```
 * Install Ingress controller:
-''' kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.0/deploy/static/provider/cloud/deploy.yaml
-'''
+```
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.0/deploy/static/provider/cloud/deploy.yaml
+```
 * Test app is working as expected.
-'''
+```
 Launch browser and connect to http://localhost/hello
-'''
+```
 ### Set up CI using GitHub actions workflow.
 ```Workflow
 name: Simple Node App Actions Workflow
@@ -127,15 +129,12 @@ jobs:
 ```
 ### Deployment to Google Cloud Kubernetes Engine:
 <img width="637" alt="image" src="https://user-images.githubusercontent.com/12246571/180670564-fc32c0cc-aeef-41fc-9048-db845e6de90b.png">
-* Create a Cluster & set up a service account key in IAM.
-* Add key & other CLuster details to Github secrets.
-* Install Helm & create Ingress Controllers using Help.
-* Run GitHub actions workflow which will create and push a new Docker image, apply the deployment and required services.
-* Test by launching bowser and hitting external facing IP.
 
-
-* Create a Cluster & set up a service account key in IAM.
-* Add key & other CLuster details to Github secrets.
-* Install Helm & create Ingress Controllers using Help.
-* Run GitHub actions workflow which will create and push a new Docker image, apply the deployment and required services.
-* Test by launching bowser and hitting external facing IP.
+* Set up a project in Google Cloud. [GCP Creating & Managing Projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects "GCP Creating & Managing Projects")
+* Create a GKE Cluster [Creating a GKE Cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-a-zonal-cluster "Creating a GKE Cluster")
+* Set up a service account in GKE [Creating Service Accounts](https://cloud.google.com/iam/docs/creating-managing-service-accounts "Creating Service Accounts")
+* Set up service account key in IAM. [Creating service account keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys "Creating service account keys")
+* Add key & other Cluster details to Github secrets.
+* Launch Cloud console in the GKE Cluster to Install Helm & create Ingress Controllers. [Install Helm](https://helm.sh/docs/intro/install/#from-script "Install Helm") & [Install ingress-nginx](https://kubernetes.github.io/ingress-nginx/deploy/#quick-start "Install ingress-nginx")
+* Run GitHub actions workflow which will create and push a new Docker image, apply the deployment and required services. [GitHub Actions Workflow](https://github.com/imranKpathan/simple-node-app/actions/workflows/github-actions-workflow.yaml)
+* Get External facing IP in GKE and Test by launching bowser.
