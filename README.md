@@ -130,7 +130,8 @@ jobs:
           kubectl get services -o wide
 ```
 ### Deployment to Google Cloud Kubernetes Engine:
-<img width="637" alt="image" src="https://user-images.githubusercontent.com/12246571/180670564-fc32c0cc-aeef-41fc-9048-db845e6de90b.png">
+<img width="751" alt="image" src="https://user-images.githubusercontent.com/12246571/180741871-e39aab4e-f973-4a24-ac95-b2707fb0a7a7.png">
+
 
 * Set up a project in Google Cloud. [GCP Creating & Managing Projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects "GCP Creating & Managing Projects")
 * Create a GKE Cluster [Creating a GKE Cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-a-zonal-cluster "Creating a GKE Cluster")
