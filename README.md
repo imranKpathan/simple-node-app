@@ -18,9 +18,11 @@ Simple NodeJs app build using Express API exposing only / & /hello endpoints to 
 This project is to demonstrate building a NodeJS “Hello World” web application and deploy it to a Kubernetes cluster. To build this project follow the steps given below:
 ### Build:
 * Create and use a Dockerfile to build a containerized image for this app.
+
 '''
 docker build -t imrankpathan/simple-node-app .
 '''
+
 ### Publish Image to Docker Hub:
 * Push a new version of the image to Docker Hub.
 '''
