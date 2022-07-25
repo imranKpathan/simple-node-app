@@ -44,7 +44,7 @@ Launch browser and connect to http://localhost:8080/hello
 * Create ClusterIP service config file.
 * Create Ingress service config file.
 
-_NOTE: All config files are available in k8s folder.
+_NOTE: All config files are available in k8s folder._
 
 * Apply App Deployment:
 ```
