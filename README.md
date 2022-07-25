@@ -39,11 +39,13 @@ docker run -d -p 8080:8080 --name simple-node-app imrankpathan/simple-node-app
 ```
 Launch browser and connect to http://localhost:8080/hello
 ```
-#### With Kubernetes:
+#### With Kubernetes (In-Built in Docker Desktop for Windows):
 * Create app deployment config file.
 * Create ClusterIP service config file.
 * Create Ingress service config file.
+
 _NOTE: All config files are available in k8s folder.
+
 * Apply App Deployment:
 ```
 kubectl apply -f k8s/simple-node-app-deployment.yaml
